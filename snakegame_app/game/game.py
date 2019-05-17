@@ -133,18 +133,15 @@ def power_timeout():
         else:
             canvas.delete(i)
             image = True
-            print(str(power_time) + " if ")
     elif power_time < 5 and speed_hack:
         power_time += speed
-        print(str(power_time) + " if ")
     elif power_time >= 5:
         power_time = 0
-        print(str(power_time) + " elif ")
         if wall_hack:
             wall_hack = False
             if not image:
                 canvas.delete(i)
-                image=True
+                image = True
             rand_food('wall_hack')
         elif speed_hack:
             speed_hack = False
@@ -206,12 +203,13 @@ def move_a(move):
 
 
 def reset():
-    global speed_hack, wall_hack
+    global speed_hack, wall_hack, power_time
     canvas.grid(row=0, column=0)
     canvas.create_rectangle(5, 5, width-5, height-5, fill='red')
     canvas.create_rectangle(10, 10, width-10, height-10, fill='white')
     wall_hack = False
     speed_hack = False
+    power_time = 0
     rand_food()
     rand_food()
     rand_food(pow_up='wall_hack')
